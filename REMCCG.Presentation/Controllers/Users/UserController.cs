@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using REMCCG.Application.Interfaces.UserAccounts;
+using REMCCG.Domain.Entities;
 
 namespace REMCCG.Presentation.Controllers.Users
 {
     public class UserController : Controller
     {
+
         // GET: UserController
-        public ActionResult UserIndex()
+        public ActionResult UserIndex(int id)
         {
             return View();
         }

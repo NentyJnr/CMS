@@ -1,15 +1,47 @@
-﻿@using System.Security.Claims;
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
 @{
     ViewData["Title"] = "User";
     Layout = "~/Views/Shared/_userindexLayout.cshtml";
 }
 
+<div class="Userindex">
+    <div class="sidebar">
+        <a href="#"><span class="icon">📷</span></a>
+        <div class="navigation">
+            <a href="#">Attendance Record</a>
+            <a href="#">Blog Post</a>
+            <a href="#">Department</a>
+            <a href="#">Expense</a>
+            <a href="#">Functional Department</a>
+            <a href="#">Image Galleries</a>
+            <a href="#">Member</a>
+            <a href="#">Membership</a>
+            <a href="#">Remittance</a>
+            <a href="#">Report</a>
+            <!-- Add more navigation links as needed -->
+        </div>
+    </div>
+    <div class="content">
+        <h1>Welcome, @User.FindFirstValue(ClaimTypes.Name)!</h1>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </p>
+    </div>
+</div>
 
-<main>
-    <h1>Welcome, @User.FindFirstValue(ClaimTypes.Name)!</h1>
-    <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-    </p>
-</main>
+
+<!----- Java script ----->
+
+<script>
+
+    const toggleNavBtn = document.getElementById("menu-toggle");
+    const nav = document.querySelector(".menu");
+
+    toggleNavBtn.addEventListener("click", function () {
+        nav.classList.toggle("show-menu");
+    });
+
+</script>

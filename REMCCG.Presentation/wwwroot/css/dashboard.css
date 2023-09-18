@@ -1,8 +1,8 @@
 ﻿html {
-    font-size: 10px;
+    font-size: 12px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 926px) {
     html {
         font-size: 16px;
     }
@@ -26,7 +26,7 @@ header {
     align-items: center;
     height: 7vh;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: ghostwhite;
 }
 
 .title {
@@ -38,6 +38,11 @@ header {
     font-size: 1.6rem;
     align-items: center;
     text-decoration: none;
+    font-weight: bold;
+}
+
+button {
+    display: none;
 }
 
 .menu {
@@ -62,9 +67,19 @@ nav {
     align-items: center;
 }
 
-    .login-register li.register {
-        border-left: 1px solid #858585;
-        padding: 10px; /* add some padding to separate the border from the text */
+    .login-register li:nth-child(2) a {
+        padding: 12px; /* add some padding to separate the border from the text */
+        border-radius: 4.0rem;
+        background-color: #027c04;
+        margin: 0px;
+        color: white;
+    }
+        .login-register li:nth-child(2) a:hover {
+            background-color: forestgreen;
+        }
+
+    .login-register li:nth-child(2)::after {
+        display: none;
     }
 /* NAVBAR */
 nav ul {
@@ -110,15 +125,47 @@ nav ul li:hover::after {
     align-items: center;
     justify-content: center;
     height: 90vh; /* Adjust the height as needed */
-    width: 100%;
+    width: 100vw;
 }
 
 
 .dashboard {
+    background-position: center;
+    height: 90vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    position: relative;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'Fenix', serif;
+    animation: slideshow 60s infinite linear;
+    background-image: linear-gradient(to top,rgba(4,9,30,0.3), rgba(4,9,30,0.1)), url("../Images/Dashboard-CMS.jpg");
+}
+
+@keyframes slideshow {
+    0% {
+        background-image: linear-gradient(to top,rgba(4,9,30,0.5), rgba(4,9,30,0.5)), url("../images/Dashboard-CMS.jpg");
+    }
+
+    25% {
+        background-image: linear-gradient(to top,rgba(4,9,30,0.5), rgba(4,9,30,0.5)), url("../images/Dashboard-CMS-1.jpg");
+    }
+
+    50% {
+        background-image: linear-gradient(to top,rgba(4,9,30,0.5), rgba(4,9,30,0.5)), url("../images/Dashboard-CMS-2.jpg");
+    }
+
+    75% {
+        background-image: linear-gradient(to top,rgba(4,9,30,0.5), rgba(4,9,30,0.5)), url("../images/Dashboard-CMS-3.jpg");
+    }
+
+    100% {
+        background-image: linear-gradient(to top,rgba(4,9,30,0.5), rgba(4,9,30,0.5)),url("../images/Dashboard-CMS-4.jpg");
+    }
 }
 
 .notes {
@@ -127,59 +174,33 @@ nav ul li:hover::after {
     align-content: center;
     justify-content: center;
     text-align: center;
-    /* color: black;*/
+    color: white;
     justify-self: center;
     height: 50vh;
     padding: 20px;
-    font-size: 1.6rem;
 }
-
+    .notes h1 {
+        text-shadow: 4px 4px 6px green;
+        font-size: 4.0rem;
+        font-weight: bold;
+    }
     .notes h2 {
         text-align: center;
     }
 
     .notes p {
-        color: #858585;
+        color: white;
     }
 
-.btn-get-started, .btn-login {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-    .btn-get-started:hover, .btn-login:hover {
-        background-color: #0056b3;
-    }
-
-.navbar-nav {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-item-account {
-    margin-left: 10px; /* Add some spacing between the items */
-}
 
 .button {
     text-decoration: none;
     font-family: 'Fenix', serif;
-    color: #027c04;
-    border: 1px solid #027c04;
+    color: white;
+    border: 1px solid white;
     padding: 12px 34px;
     font-size: 1.2rem;
-    background-color: whitesmoke;
+    background-color: transparent;
     cursor: pointer;
     font-weight: lighter;
 }
@@ -198,4 +219,119 @@ footer {
     padding: 0.1em;
     width: 100%;
     height: 3vh;
+}
+
+@media only screen and (max-width: 926px) {
+
+    button {
+        display: flex;
+        color: #027c04;
+    }
+
+    header {
+        background-color: whitesmoke;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .title {
+        display: flex;
+    }
+
+
+    #menu-toggle,
+    #close-menu {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 2.8rem;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .menu {
+        display: none;
+    }
+
+    .show-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 5vh;
+        height: auto;
+        margin-left: -2.0rem;
+        width: 100%;
+        align-items: center;
+        background-color: whitesmoke;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .login-register {
+        display: flex;
+        align-items: center;
+    }
+
+        .login-register li:nth-child(2) a {
+            padding: 12px; /* add some padding to separate the border from the text */
+            border-radius: 4.0rem;
+            background-color: #027c04;
+            margin: 0px;
+            color: white;
+        }
+
+            .login-register li:nth-child(2) a:hover {
+                background-color: forestgreen;
+            }
+
+        .login-register li:nth-child(2)::after {
+            display: none;
+        }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        margin: 1.0rem 0;
+    }
+
+    nav li {
+        margin: 0.5rem 0;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #858585;
+        font-size: 1.6rem;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    nav li a:hover {
+        color: #616161;
+    }
+
+
+    nav {
+        font-size: 1.2rem;
+    }
+    .dashboard {
+        height: 97vh;
+        width: 100vw;
+    }
+    .container {
+        height: 97vh; /* Adjust the height as needed */
+        width: 100%;
+    }
 }
