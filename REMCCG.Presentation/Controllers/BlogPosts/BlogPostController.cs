@@ -12,9 +12,9 @@ namespace REMCCG.Presentation.Controllers.BlogPosts
         {
             _blogPostService = blogPostService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var blogPosts = _blogPostService.GetAllRecord(); // Define this method in your service
+            var blogPosts = await _blogPostService.GetAllRecord(); // Define this method in your service
             return View(blogPosts);
         }
 

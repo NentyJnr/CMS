@@ -32,7 +32,7 @@ namespace REMCCG.Application.Services
             try
             {
                 var data = await _context.GetData<BlogPostModel>("Exec [dbo].[SP_GetBlogPosts]");
-                response.Data = data;
+                response.Data = data.ToList();
                 response.IsSuccessful = true;
             }
             catch (Exception ex)

@@ -17,7 +17,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     font-size: 1.6rem;
-    overflow-x: hidden;
 }
 
 header {
@@ -150,7 +149,7 @@ nav ul li p:hover::after {
 
 /* Sidebar styles */
 .sidebar {
-    width: 40vw; /* Adjust the width as needed */
+    width: 305px; /* Adjust the width as needed */
     background-color: #027c04;
     padding: 20px;
     color: #fff;
@@ -168,11 +167,9 @@ nav ul li p:hover::after {
     gap: 30px; /* Adjust the gap as needed */
     padding: 10px;
 }
-
     .user i {
         font-size: 4.0rem;
     }
-
     .user h2 {
         margin-bottom: 10px;
     }
@@ -180,6 +177,10 @@ nav ul li p:hover::after {
 .navigation ul {
     list-style: none;
 }
+    .navigation ul li {
+        width: 100%;
+    }
+
     .navigation ul li a {
         display: block;
         margin-bottom: 5px;
@@ -187,7 +188,6 @@ nav ul li p:hover::after {
         font-size: 1.0rem;
         padding: 7px;
         text-decoration: none;
-        width: 100%;
     }
 
         .navigation ul li a:hover {
@@ -197,22 +197,8 @@ nav ul li p:hover::after {
             font-size: 1.2rem;
         }
 
-
-                                    /* USER INDEX CSS*/
-
+/* Style the content container */
 .content {
-    flex-grow: 1;
-    padding: 20px;
-}
-
-.icon {
-    margin-right: 10px;
-}
-
-                                /* ATTENDANCE RECORDS */
-
- 
-.record-content {
     max-width: 60vw;
     margin: 0 auto;
     padding: 20px;
@@ -335,6 +321,8 @@ h1 {
 .icon {
     margin-right: 10px;
 }
+
+
 footer {
     background-color: grey;
     color: #f6f6f6;

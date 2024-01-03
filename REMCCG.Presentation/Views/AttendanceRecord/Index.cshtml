@@ -1,5 +1,110 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Attendance Record";
+    Layout = "~/Views/Shared/_userindexLayout.cshtml";
 }
+
+<div class="Userindex">
+    <div class="record-content">
+        <div class="record-content">
+            <h1>Attendance Records</h1>
+            <div id="createButton">
+                <a asp-area="" asp-controller="AttendanceRecord" asp-action="Create">Create New Record</a>
+            </div>
+            <table id="recordsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows of attendance records will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal for viewing/editing/deleting a record -->
+        <div id="recordModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- Content for viewing/editing/deleting a record will be displayed here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----- Java script ----->
+
+<script>
+
+    const toggleNavBtn = document.getElementById("menu-toggle");
+    const nav = document.querySelector(".menu");
+
+    toggleNavBtn.addEventListener("click", function () {
+        nav.classList.toggle("show-menu");
+    });
+
+</script>
+<script>
+                $(document).ready(function () {
+    // Sample data for demonstration (you can replace this with actual data from your server)
+    const attendanceRecords = [
+        { id: 1, date: '2023-09-15', name: 'John Doe', details: 'Details for John Doe' },
+        { id: 2, date: '2023-09-16', name: 'Jane Smith', details: 'Details for Jane Smith' },
+        // Add more records here
+    ];
+
+    // Function to populate the table with attendance records
+    function populateTable() {
+        const tbody = $('#recordsTable tbody');
+        tbody.empty();
+
+        attendanceRecords.forEach(record => {
+            const row = `
+                    <tr data-record-id="${record.id}">
+                        <td>${record.date}</td>
+                        <td>${record.name}</td>
+                        <td>
+                            <button class="viewButton">View</button>
+                            <button class="editButton">Edit</button>
+                            <button class="deleteButton">Delete</button>
+                        </td>
+                    </tr>
+            `;
+            tbody.append(row);
+        });
+    }
+
+    // Function to display the modal for viewing/editing/deleting a record
+    function openRecordModal(recordId) {
+        const record = attendanceRecords.find(r => r.id === recordId);
+        if (record) {
+            const modal = $('#recordModal');
+            modal.find('.modal-content').html(`
+                        <h2>${record.name}</h2>
+                        <p>Date: ${record.date}</p>
+                        <p>${record.details}</p>
+                        <button class="editButton">Edit</button>
+                        <button class="deleteButton">Delete</button>
+            `);
+            modal.show();
+        }
+    }
+
+    // Close modal when the close button or outside the modal is clicked
+    $('#recordModal .close').click(function () {
+        $('#recordModal').hide();
+    });
+
+    // Handle click events for view/edit/delete buttons
+    $('#recordsTable').on('click', '.viewButton', function () {
+        const recordId = $(this).closest('tr').data('record-id');
+        openRecordModal(recordId);
+    });
+
+    // Initialize the table
+    populateTable();
+});
+    </script>
