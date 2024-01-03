@@ -1,0 +1,25 @@
+﻿@model REMCCG.Application.Common.Models.LoginRequest
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_accountLayout.cshtml";
+}
+
+<body>
+    <h2>Login</h2>
+    <form method="post">
+        <div class="errors" asp-validation-summary="All"></div>
+        <div>
+            <label for="Email">Email:</label>
+            <input asp-for="Email" type="email" id="Email" name="Email" required />
+        </div>
+        <div>
+            <label for="Password">Password:</label>
+            <input asp-for="Password" type="password" id="Password" name="Password" required />
+        </div>
+        <div>
+            <label for="RememberMe">Remember Me:</label>
+            <input asp-for="RememberMe" />
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</body>
